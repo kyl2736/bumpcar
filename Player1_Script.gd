@@ -46,7 +46,7 @@ func _read_input() -> void:
 	if Input.is_action_just_pressed("special_use"):
 		_use_item()
 
-	# 벽차기는 이동 중 언제든 입력 가능
+	# 벽차기는 이동 언제든 입력 가능
 	if Input.is_action_just_pressed("wall_kick"):
 		_attempt_wall_kick()
 
