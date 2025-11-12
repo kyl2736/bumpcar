@@ -13,14 +13,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2fwl4")
 
-[node name="Gauge" type="TextureProgressBar" parent="HUD"]
-editor_description = "쉽지 않다
-"
+[node name="ItemSlot" type="TextureRect" parent="HUD"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ItemSlot" type="TextureRect" parent="HUD"]
+[node name="Gauge" type="ProgressBar" parent="HUD"]
 layout_mode = 0
+offset_right = 288.0
+offset_bottom = 46.0
+
+[node name="PitstopMinigame" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

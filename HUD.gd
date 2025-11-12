@@ -2,7 +2,7 @@
 extends Control
 class_name HUD
 
-@onready var gauge_bar : TextureProgressBar = $Gauge
+@onready var gauge_bar : ProgressBar = $Gauge
 @onready var item_slot : TextureRect = $ItemSlot
 
 func _ready() -> void:
