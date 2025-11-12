@@ -11,7 +11,6 @@ class_name Player
 
 var stats: Dictionary = GameDefs.BASES.duplicate()
 var input_dir: Vector2 = Vector2.ZERO
-
 var gauge: float = 0.0
 var current_item: int = GameDefs.ItemType.NONE
 
@@ -26,7 +25,6 @@ var boost_on := false
 @onready var item_holder = $ItemHolder
 
 func _ready() -> void:
-	# 타이머 연결
 	invincible_timer.timeout.connect(_on_invincible_done)
 	magnet_timer.timeout.connect(_on_magnet_done)
 	boost_timer.timeout.connect(_on_boost_done)
@@ -46,13 +44,8 @@ func _read_input() -> void:
 	if Input.is_action_just_pressed("special_use"):
 		_use_item()
 
-	# 벽차기는 이동 언제든 입력 가능
-	if Input.is_action_just_pressed("wall_kick"):
-		_attempt_wall_kick()
-
 func _apply_motor(delta: float) -> void:
 	var target_v = input_dir * stats["max_speed"]
-	# 가/감속
 	var to_target = target_v - velocity
 	var ax = stats["accel"] if to_target.length() > 0 else stats["decel"]
 	var step = ax * delta
@@ -61,50 +54,44 @@ func _apply_motor(delta: float) -> void:
 	else:
 		velocity = target_v
 
-	# 부스트 상한
 	if boost_on and velocity.length() > stats["boost_cap"]:
 		velocity = velocity.normalized() * stats["boost_cap"]
 
-	# 간단 핸들링 보정(선회 느낌)
 	if input_dir != Vector2.ZERO:
 		var lerp_amount = clamp(stats["handling"] * delta * 0.1, 0.0, 1.0)
 		velocity = velocity.lerp(input_dir * velocity.length(), lerp_amount)
 
 func _move_and_collide_with_wallkick(delta: float) -> void:
-	# 이동
-	move_and_slide()
-	# 충돌 체크: Godot 4는 get_slide_collision_count / get_slide_collision(i)
-	for i in get_slide_collision_count():
-		var col := get_slide_collision(i)
-		if col and col.get_collider() and col.get_normal() != Vector2.ZERO:
-			_on_hit_wall(col.get_normal())
+	var motion := velocity * delta
+	var collision := move_and_collide(motion)
+	if collision:
+		_on_hit_wall(collision.get_normal())
+	else:
+		global_position += motion
 
 func _on_hit_wall(normal: Vector2) -> void:
 	if invincible:
 		return
+
+	# --- 벽 부딪힘 시 자동 wall kick ---
+	var n := normal.normalized()
+	var v := velocity
+	var v_n := v.project(n)
+	var v_t := v - v_n
+
+	var boosted := (-v_n * wall_kick_restitution) + (v_t * (1.0 + parallel_boost_factor))
+	velocity = boosted
+
+	# 속도 상한 및 감쇠 적용
+	var target_speed: float = min(stats["boost_cap"], velocity.length() + 120.0)
+	velocity = velocity.normalized() * target_speed
+	velocity *= (0.9 + 0.1 * stats["mass"])
+
 	# 부딪힘 게이지 상승
 	_add_gauge(gauge_per_hit)
 
-	# 차량 무게가 클수록 덜 튕기도록 약한 감쇠
-	velocity = velocity.reflect(normal)
-	velocity *= (0.9 + 0.1 * stats["mass"])  # mass↑ -> 감쇠↑(튕김 감소)
-
-func _attempt_wall_kick() -> void:
-	# 최근 충돌 노멀을 찾아 반사 + 평행성분 가감
-	if get_slide_collision_count() == 0:
-		return
-	var col := get_slide_collision(get_slide_collision_count() - 1)
-	if not col:
-		return
-	var n := col.get_normal().normalized()
-	var v := velocity
-	var v_n := v.project(n)             # 벽 법선 성분
-	var v_t := v - v_n                  # 벽과 평행 성분
-	var boosted := (-v_n * wall_kick_restitution) + (v_t * (1.0 + parallel_boost_factor))
-	velocity = boosted
-	# 순간 광속도 상승 느낌(부스트)
-	var target_speed: float = min(stats["boost_cap"], velocity.length() + 120.0)
-	velocity = velocity.normalized() * target_speed
+	# 카메라 흔들림 효과 (카메라가 있다면)
+	get_viewport().get_camera_2d().start_shake(6.0)
 
 func _add_gauge(amount: float) -> void:
 	gauge = clamp(gauge + amount, 0.0, gauge_max)
@@ -141,7 +128,6 @@ func _use_item() -> void:
 func _invincible_start(sec: float) -> void:
 	invincible = true
 	invincible_timer.start(sec)
-	# 시각효과(간단하게 깜빡임)
 	modulate = Color(1,1,1,0.6)
 
 func _on_invincible_done() -> void:
@@ -151,7 +137,6 @@ func _on_invincible_done() -> void:
 func _magnet_start(sec: float) -> void:
 	magnet_on = true
 	magnet_timer.start(sec)
-	# TODO: 근처 코인/업그레이드 오브젝트에 끌림 적용(Area2D로 구현)
 
 func _on_magnet_done() -> void:
 	magnet_on = false
@@ -168,14 +153,12 @@ func _fire_hook() -> void:
 	var to = global_position + velocity.normalized() * 300.0
 	var query = PhysicsRayQueryParameters2D.create(global_position, to)
 	var res = space.intersect_ray(query)
-
 	if res and res.has("position"):
 		var hit_pos: Vector2 = res["position"]
 		var dir = (hit_pos - global_position)
 		velocity = dir.normalized() * max(velocity.length(), 600.0)
-		
+
 func _spawn_temp_wall() -> void:
-	# “벽 생성: 스페셜키 사용 시 차가 있는 위치에 생성”
 	var wall_scene: PackedScene = preload("res://TempWall.tscn")
 	var wall := wall_scene.instantiate()
 	get_tree().current_scene.add_child(wall)
