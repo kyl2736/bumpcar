@@ -16,7 +16,7 @@ func set_item_icon(tex: Texture2D) -> void:
 
 # 예: Main.gd (또는 HUD.gd 안에서)
 func open_pitstop_for(player) -> void:
-	var scene: PackedScene = preload("res://PitstopMinigame.tscn")
+	var scene: PackedScene
 	var p := scene.instantiate()
 	$UI/HUD.add_child(p)
 	p.finished.connect(func(success: bool, upg: Dictionary):
