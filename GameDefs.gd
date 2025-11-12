@@ -21,7 +21,7 @@ const ITEM_DURATIONS := {
 }
 
 const BASES := {
-	"max_speed": 1000.0,
+	"max_speed": 640.0,
 	"accel": 1800.0,
 	"decel": 2200.0,
 	"handling": 9.0,    # 회전/조향 보정
