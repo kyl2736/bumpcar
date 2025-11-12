@@ -3,7 +3,7 @@ extends Control
 
 class_name PitstopMinigame
 
-const GameDefs = preload("res://scripts/GameDefs.gd")
+#const GameDefs = preload("res://scripts/GameDefs.gd")
 signal finished(success: bool, chosen_upgrade: Dictionary)
 
 @export var speed := 520.0
