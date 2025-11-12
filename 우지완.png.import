@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ne3nqqoxqot1"
-path="res://.godot/imported/샌즈.jpeg-d7bc1363535027a2ddab7656ef34a013.ctex"
+uid="uid://c5iqavalkuril"
+path="res://.godot/imported/우지완.png-6a0c0fe3419dc5b388e1f2becd516b9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://샌즈.jpeg"
-dest_files=["res://.godot/imported/샌즈.jpeg-d7bc1363535027a2ddab7656ef34a013.ctex"]
+source_file="res://우지완.png"
+dest_files=["res://.godot/imported/우지완.png-6a0c0fe3419dc5b388e1f2becd516b9e.ctex"]
 
 [params]
 

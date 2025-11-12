@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgemo4cplrs8d"]
 
 [ext_resource type="Script" uid="uid://dkm38tjt7repm" path="res://Player1_Script.gd" id="1_skf4x"]
-[ext_resource type="Texture2D" uid="uid://ne3nqqoxqot1" path="res://샌즈.jpeg" id="2_g1yg3"]
+[ext_resource type="Texture2D" uid="uid://c5iqavalkuril" path="res://우지완.png" id="2_g1yg3"]
 
 [node name="Player1" type="CharacterBody2D"]
 script = ExtResource("1_skf4x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_g1yg3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
