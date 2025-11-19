@@ -5,3 +5,51 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Bar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 700.0
+offset_bottom = 320.0
+color = Color(0.4348122, 0.4542874, 0.43966883, 1)
+
+[node name="Window" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.62352943)
+layout_mode = 0
+offset_left = 300.0
+offset_top = 280.0
+offset_right = 420.0
+offset_bottom = 340.0
+color = Color(0.53333336, 1, 0.53333336, 1)
+
+[node name="Target" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 280.0
+offset_right = 130.0
+offset_bottom = 340.0
+color = Color(1, 0.26666668, 0.26666668, 1)
+
+[node name="Prompt" type="Label" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 400.0
+offset_right = 257.0
+offset_bottom = 423.0
+text = "타이밍에 맞춰 [enter]"
+
+[node name="Result" type="Label" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 450.0
+offset_right = 140.0
+offset_bottom = 473.0
+
+[node name="UpgradeList" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 100.0
+offset_top = 500.0
+offset_right = 140.0
+offset_bottom = 540.0
