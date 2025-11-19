@@ -56,7 +56,11 @@ func _check_hit() -> void:
 
 func _build_upgrades() -> void:
 	list.visible = false
-	list.clear()
+
+	# Remove all existing children (buttons) safely
+	for child in list.get_children():
+		child.queue_free()
+
 	var picks := []
 	randomize()
 	while picks.size() < 3:
@@ -70,7 +74,6 @@ func _build_upgrades() -> void:
 			_finish(o)
 		)
 		list.add_child(b)
-
 
 func _finish(choice: Dictionary) -> void:
 	ended = true

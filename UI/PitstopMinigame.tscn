@@ -20,9 +20,9 @@ color = Color(0.4348122, 0.4542874, 0.43966883, 1)
 [node name="Window" type="ColorRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.62352943)
 layout_mode = 0
-offset_left = 300.0
+offset_left = 310.0
 offset_top = 280.0
-offset_right = 420.0
+offset_right = 410.0
 offset_bottom = 340.0
 color = Color(0.53333336, 1, 0.53333336, 1)
 
@@ -34,20 +34,11 @@ offset_right = 130.0
 offset_bottom = 340.0
 color = Color(1, 0.26666668, 0.26666668, 1)
 
-[node name="Prompt" type="Label" parent="."]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 400.0
-offset_right = 257.0
-offset_bottom = 423.0
-text = "타이밍에 맞춰 [enter]"
-autowrap_mode = 2
-
 [node name="Result" type="Label" parent="."]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 450.0
-offset_right = 140.0
+offset_right = 447.0
 offset_bottom = 473.0
 autowrap_mode = 2
 
@@ -55,5 +46,5 @@ autowrap_mode = 2
 layout_mode = 0
 offset_left = 100.0
 offset_top = 500.0
-offset_right = 140.0
+offset_right = 512.0
 offset_bottom = 540.0
