@@ -9,5 +9,5 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	# Player만 피트스탑 대상으로 취급
-	if body is Player:
+	if body is Player_1:
 		emit_signal("player_entered", body)

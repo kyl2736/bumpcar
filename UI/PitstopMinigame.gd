@@ -1,7 +1,6 @@
 # PitstopMinigame.gd
 extends Control
-
-class_name PitstopMinigame
+class_name Minigame
 
 #const GameDefs = preload("res://scripts/GameDefs.gd")
 signal finished(success: bool, chosen_upgrade: Dictionary)

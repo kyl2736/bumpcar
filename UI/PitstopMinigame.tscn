@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cac4hkbs320d"]
 
-[ext_resource type="Script" uid="uid://d2gfo4ak462mb" path="res://UI/PitstopMinigame.gd" id="1_67s18"]
+[ext_resource type="Script" uid="uid://ctujbkfjqo41s" path="res://UI/PitstopMinigame.gd" id="1_67s18"]
 
 [node name="PitstopMinigame" type="Control"]
 layout_mode = 3
