@@ -38,6 +38,7 @@ offset_top = 400.0
 offset_right = 257.0
 offset_bottom = 423.0
 text = "타이밍에 맞춰 [enter]"
+autowrap_mode = 2
 
 [node name="Result" type="Label" parent="."]
 layout_mode = 0
@@ -45,6 +46,7 @@ offset_left = 100.0
 offset_top = 450.0
 offset_right = 140.0
 offset_bottom = 473.0
+autowrap_mode = 2
 
 [node name="UpgradeList" type="VBoxContainer" parent="."]
 visible = false
