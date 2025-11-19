@@ -1,8 +1,8 @@
 # Player.gd
 extends CharacterBody2D
-class_name Player_1
+class_name Player_2
 
-@export var player_id := 1
+@export var player_id := 2
 @export var gauge_max := 100.0
 @export var wall_kick_restitution := 1.0   # 벽 법선 성분 보존 후 반전 계수
 @export var parallel_boost_factor := 0.25  # 벽과 평행 성분에 더해줄 비율
@@ -37,8 +37,8 @@ func _physics_process(delta: float) -> void:
 
 func _read_input() -> void:
 	input_dir = Vector2(
-		Input.get_action_strength("1move_right") - Input.get_action_strength("1move_left"),
-		Input.get_action_strength("1move_down") - Input.get_action_strength("1move_up")
+		Input.get_action_strength("2move_right") - Input.get_action_strength("2move_left"),
+		Input.get_action_strength("2move_down") - Input.get_action_strength("2move_up")
 	).normalized()
 
 	if Input.is_action_just_pressed("special_use"):
@@ -48,7 +48,6 @@ func _apply_motor(delta: float) -> void:
 	var target_v = input_dir * stats["max_speed"]
 	var to_target = target_v - velocity
 	var ax = stats["accel"] if to_target.length() > 0 else stats["decel"]
-	
 	var step = ax * delta
 	if to_target.length() > step:
 		velocity += to_target.normalized() * step

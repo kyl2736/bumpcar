@@ -22,8 +22,8 @@ const ITEM_DURATIONS := {
 
 const BASES := {
 	"max_speed": 640.0,
-	"accel": 1800.0,
-	"decel": 2200.0,
+	"accel": 2000.0,
+	"decel": 0.0,
 	"handling": 9.0,    # 회전/조향 보정
 	"mass": 1.0,        # 반탄(튕김) 계산에서 사용
 	"boost_cap": 800.0, # 부스트 상한
