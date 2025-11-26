@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://ogw7lvcbjrts"]
+[gd_scene load_steps=8 format=4 uid="uid://ogw7lvcbjrts"]
 
 [ext_resource type="Script" uid="uid://dxu2feu38jpbw" path="res://main.gd" id="1_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://bgemo4cplrs8d" path="res://Player_1.tscn" id="1_r0du0"]
-[ext_resource type="PackedScene" uid="uid://cyn1wgn535jbm" path="res://Track.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://lh84i5a14qme" path="res://Track.tscn" id="2_uu6xs"]
 [ext_resource type="Script" uid="uid://c4ukvfljog7s3" path="res://pitstop_zone.gd" id="3_r0du0"]
 [ext_resource type="PackedScene" uid="uid://bqfmf01dam7sx" path="res://UI/ui.tscn" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://bfpdku4gloujk" path="res://Player_2.tscn" id="6_3dxm6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu6xs"]
 size = Vector2(903.5, 216.5)
@@ -29,3 +30,5 @@ position = Vector2(4.25, -974)
 shape = SubResource("RectangleShape2D_uu6xs")
 
 [node name="UI" parent="." instance=ExtResource("5_fos0i")]
+
+[node name="Player2" parent="." instance=ExtResource("6_3dxm6")]
