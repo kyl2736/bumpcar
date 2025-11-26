@@ -13,6 +13,10 @@ var stats: Dictionary = GameDefs.BASES.duplicate()
 var input_dir: Vector2 = Vector2.ZERO
 var gauge: float = 0.0
 var current_item: int = GameDefs.ItemType.NONE
+var laps := 0
+var last_cross_time := -1.0
+var finished := false
+var can_count_lap := false
 
 var invincible := false
 var magnet_on := false
