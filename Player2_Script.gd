@@ -9,6 +9,8 @@ class_name Player_2
 @export var gauge_per_hit := 12.0          # 벽 부딪힘 시 게이지 증가량
 @export var item_icon_map := {}            # ItemType:int -> Texture (에디터에서 연결)
 
+
+
 var stats: Dictionary = GameDefs.BASES.duplicate()
 var input_dir: Vector2 = Vector2.ZERO
 var gauge: float = 0.0
@@ -22,17 +24,20 @@ var invincible := false
 var magnet_on := false
 var boost_on := false
 
-@onready var hud = get_tree().get_first_node_in_group("HUD")
 @onready var invincible_timer: Timer = $InvincibleTimer
 @onready var magnet_timer: Timer = $MagnetTimer
 @onready var boost_timer: Timer = $BoostTimer
 @onready var item_holder = $ItemHolder
 
+var hud
 func _ready() -> void:
+	hud = get_node("/root/Main/UI/HUD_Player4")
+	print("Player1 HUD =", hud)
 	invincible_timer.timeout.connect(_on_invincible_done)
 	magnet_timer.timeout.connect(_on_magnet_done)
 	boost_timer.timeout.connect(_on_boost_done)
 	update_hud()
+
 
 func _physics_process(delta: float) -> void:
 	_read_input()

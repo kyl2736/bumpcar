@@ -6,6 +6,11 @@ class_name HUD
 @onready var item_slot : TextureRect = $ItemSlot
 
 func _ready() -> void:
+	print("HUD READY:", self.get_path())
+	print("Gauge node:", $Gauge, "Type:", typeof($Gauge))
+	print("Gauge is ProgressBar:", $Gauge is ProgressBar)
+	print("HUD READY FOR:", self.name)
+	print("HUD _ready() running. Gauge node =", $Gauge)
 	add_to_group("HUD")
 
 func set_gauge(ratio: float) -> void:
