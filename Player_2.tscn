@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfpdku4gloujk"]
 
 [ext_resource type="Script" uid="uid://dvt2n4ikww0by" path="res://Player2_Script.gd" id="1_myi03"]
-[ext_resource type="Texture2D" uid="uid://c5iqavalkuril" path="res://우지완.png" id="2_g1yg3"]
+[ext_resource type="Texture2D" uid="uid://kqft3fb6hv72" path="res://2p.png" id="2_myi03"]
 [ext_resource type="Script" uid="uid://dy5ntub0mbtoq" path="res://camera_1.gd" id="3_0v3hi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1yg3"]
@@ -11,8 +11,8 @@ radius = 20.0
 script = ExtResource("1_myi03")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_g1yg3")
+scale = Vector2(0.054, 0.054)
+texture = ExtResource("2_myi03")
 
 [node name="Camera2D_1" type="Camera2D" parent="Sprite2D"]
 script = ExtResource("3_0v3hi")
