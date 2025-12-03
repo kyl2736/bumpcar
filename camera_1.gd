@@ -13,6 +13,7 @@ var _shake_offset := Vector2.ZERO
 var _rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
+	zoom=Vector2(0.4,0.4)
 	if target_path != NodePath(""):
 		_target = get_node(target_path)
 	else:
